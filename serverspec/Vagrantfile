@@ -10,14 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "debian-7.4_amd64-vboxadd-puppet3"
+  config.vm.box = "debian-7.6_amd64-vboxadd-puppet34"
 
   config.vm.hostname = "debian"
   #config.ssh.private_key_path = "~/.ssh/id_rsa"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://192.168.56.254/repository/vagrant/boxes/debian-7.4_amd64-vboxadd-puppet3.box"
+  config.vm.box_url = "http://download/repository/vagrant/boxes/debian-7.6_amd64-vboxadd-puppet34.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -64,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      #vb.gui = true
      vb.customize ["modifyvm", :id, "--memory", "1024"]
      vb.customize ["modifyvm", :id, "--audio", "none", "--usb", "on", "--usbehci", "off"]
-     vb.name = "icinga2-debian-7.4"
+     vb.name = "icinga2-debian"
   end
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
@@ -86,6 +86,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # # }
   #
   config.vm.provision "puppet" do |puppet|
+     puppet.module_path = "modules"
      #puppet.options = "--verbose --debug"
   end
   # config.vm.provision :puppet do |puppet|

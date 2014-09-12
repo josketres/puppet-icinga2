@@ -56,6 +56,3 @@ class { 'repos::debmon':
    stage => 'repos',
 }
 
-class { 'icinga2':
-   stage => 'after',
-}
